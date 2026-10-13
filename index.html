@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo de Pila para Conversión Infija a Postfija</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #2d3748;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .infographic-vertical {
+            width: 100%;
+            max-width: 750px;
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-left: 8px solid #1a365d;
+        }
+        .inf-header {
+            background-color: #1a365d;
+            color: #ffffff;
+            padding: 35px 30px;
+            text-align: left;
+        }
+        .inf-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .inf-header .subtitle {
+            font-size: 15px;
+            color: #00b4d8;
+            margin-top: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .inf-body {
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+        .rule-card {
+            display: flex;
+            align-items: flex-start;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 18px 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .rule-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-color: #cbd5e1;
+        }
+        .rule-number {
+            background-color: #00b4d8;
+            color: #ffffff;
+            min-width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 15px;
+            margin-right: 18px;
+            flex-shrink: 0;
+        }
+        .rule-content {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+        .rule-content strong {
+            color: #1a365d;
+        }
+        .highlight-red {
+            color: #e53e3e;
+            font-weight: 600;
+        }
+        .highlight-turquoise {
+            color: #0077b6;
+            font-weight: 600;
+        }
+        .inf-footer {
+            background-color: #f1f5f9;
+            text-align: center;
+            padding: 18px;
+            font-size: 13px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="infographic-vertical">
+    <!-- Encabezado -->
+    <div class="inf-header">
+        <div class="subtitle">Estructuras de Datos / Algoritmos de Pila</div>
+        <h1>Conversión de Expresión Infija a Postfija</h1>
+    </div>
+
+    <!-- Cuerpo con los pasos y reglas -->
+    <div class="inf-body">
+        
+        <div class="rule-card">
+            <div class="rule-number">1</div>
+            <div class="rule-content">
+                La expresión aritmética se trabaja de <span class="highlight-red">izquierda a derecha</span>.
+            </div>
+        </div>
+
+        <div class="rule-card">
+            <div class="rule-number">2</div>
+            <div class="rule-content">
+                Cuando se procesa un <strong>Operando</strong>, se coloca directamente en la <span class="highlight-turquoise">Expresión Postfija</span>. Si se procesa un <strong>paréntesis izquierdo</strong> <code style="background:#edf2f7; padding:2px 6px; border-radius:4px;">(</code>, se almacena en la pila.
+            </div>
+        </div>
+
+        <div class="rule-card">
+            <div class="rule-number">3</div>
+            <div class="rule-content">
+                Cuando se procesa un <strong>Operador</strong>, y en el tope de la pila se encuentra almacenado otro operador, saque el operador de la pila siempre y cuando su jerarquía sea <span class="highlight-red">mayor o igual</span> al que se procesa y añádalo a la Expresión Postfija.
+            </div>
+        </div>
+
+        <div class="rule-card">
+            <div class="rule-number">4</div>
+            <div class="rule-content">
+                Este proceso se repite siempre y cuando en el tope de la pila existan operadores que cumplan esta condición. Si ya no existen más, proceda a almacenar el operador que estaba procesando en la Pila.
+            </div>
+        </div>
+
+        <div class="rule-card">
+            <div class="rule-number">5</div>
+            <div class="rule-content">
+                Si se procesa un <strong>paréntesis derecho</strong> <code style="background:#edf2f7; padding:2px 6px; border-radius:4px;">)</code>, saque todos los elementos que se encuentran en la Pila y añádelos a la expresión postfija hasta encontrar un <strong>paréntesis izquierdo</strong> <code style="background:#edf2f7; padding:2px 6px; border-radius:4px;">(</code>. Los paréntesis izquierdo y derecho se eliminan.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Pie de infografía -->
+    <div class="inf-footer">
+        Universidad Tecnológica de Panamá — Facultad de Ingeniería de Sistemas Computacionales
+    </div>
+</div>
+
+</body>
+</html>
